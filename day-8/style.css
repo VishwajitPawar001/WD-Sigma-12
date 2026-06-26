@@ -365,3 +365,8 @@ a {
 .volume::-webkit-slider-thumb {
     display: none;
 }
+
+
+.opacity {
+    opacity: 0.7;
+}
