@@ -17,14 +17,30 @@ const userSchema = new mongoose.Schema({
 });
 
 const User = mongoose.model('User', userSchema);
-const user2 = new User({
-  name: 'Eve',
-  email: 'Eve@yahoo.com',
-  age: 20,
-});
+// const user2 = new User({
+//   name: 'Eve',
+//   email: 'Eve@yahoo.com',
+//   age: 20,
+// });
 
-user2
-  .save()
+// user2
+//   .save()
+//   .then((res) => {
+//     console.log(res);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
+
+// User.findById('6a833088c8748256c5138edf')
+//   .then((res) => {
+//     console.log(res);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
+
+User.updateOne({ name: 'adam' }, { name: 'Adam' })
   .then((res) => {
     console.log(res);
   })
