@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const Chat = require('./models/chat.js');
-const methodOverride = require('method-override')
+const methodOverride = require('method-override');
 
 const app = express();
 
@@ -11,7 +11,7 @@ app.set('view engine', 'ejs');
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
-app.use(methodOverride("_method"))
+app.use(methodOverride('_method'));
 main()
   .then(() => console.log('connection successful'))
   .catch((err) => console.log(err));
@@ -65,7 +65,14 @@ app.put('/chats/:id', async (req, res) => {
     { runValidators: true, new: true }
   );
   console.log(updatedChat);
-  res.redirect('/chats')
+  res.redirect('/chats');
+});
+
+app.delete('/chats/:id', async (req, res) => {
+  let { id } = req.params;
+  let deletedChat = await Chat.findByIdAndDelete(id);
+  console.log(deletedChat);
+  res.redirect('/chats');
 });
 
 app.listen(5000, () => {
